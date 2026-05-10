@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="android-chrome" href="/android-chrome.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <!-- Preconnect to critical origins EARLY for faster resource loading -->
+  <link rel="preconnect" href="https://api.subsource.net" crossorigin>
+  <link rel="preconnect" href="https://cdn.subsource.net" crossorigin>
+  
+  
+
+  <!-- DNS prefetch as fallback -->
+  <link rel="dns-prefetch" href="https://api.subsource.net">
+  <link rel="dns-prefetch" href="https://cdn.subsource.net">
+
+  <title>SubSource - Download Free Subtitles for Movies and TV Shows</title>
+  <meta name="description"
+    content="Download subtitles for your favorite movies, entire seasons of TV Shows, and more—all from our diverse source. Best of all? It is free!">
+  <meta name="keywords"
+    content="subtitles, movie subtitles, TV show subtitles, free subtitles, download subtitles, subtitle search, subtitle" />
+  <link rel="canonical" href="https://subsource.net/" />
+
+  <noscript>
+  </noscript>
+
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    body {
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Loading screen styles */
+    #initial-loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #initial-loading.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
+      /* Smooth fade out */
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #initial-loading {
+        background-color: rgb(18, 18, 18);
+      }
+    }
+
+    .loading-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loading-spinner {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: #14b8a6;
+      /* teal-500 - primary color */
+      animation: spin 1s linear infinite;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .loading-spinner {
+        color: #5eead4;
+        /* teal-300 - lighter for dark mode */
+      }
+    }
+
+    .loading-spinner circle {
+      opacity: 0.25;
+    }
+
+    .loading-spinner path {
+      opacity: 0.75;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://subsource.net/" />
+  <meta property="og:title" content="SubSource - Download Free Subtitles for Movies and TV Shows" />
+  <meta property="og:description"
+    content="Download high-quality subtitles for your favorite movies, TV shows, and series in multiple languages. Fast, free, and easy to use." />
+  <meta property="og:image" content="https://subsource.net/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://subsource.net/" />
+  <meta property="twitter:title" content="SubSource - Download Free Subtitles for Movies and TV Shows" />
+  <meta property="twitter:description"
+    content="Download high-quality subtitles for your favorite movies, TV shows, and series in multiple languages. Fast, free, and easy to use." />
+  <meta property="twitter:image" content="https://subsource.net/twitter-image.jpg" />
+
+  <!-- Structured Data / Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SubSource",
+      "url": "https://subsource.net",
+      "description": "Download high-quality subtitles for your favorite movies, TV shows, and series in multiple languages."
+    }
+  </script>
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="/assets/Lato-Regular-BwLIet1C.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/assets/Lato-Bold-B5iD31kO.ttf" as="font" type="font/ttf" crossorigin>
+  <script type="f189d841d1b0a50d901e2557-module" crossorigin src="/assets/index-aXhBeR7r.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B1OV6UpC.css">
+</head>
+
+<body>
+  <div id="initial-loading">
+    <div class="loading-content">
+      <svg class="loading-spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+        </path>
+      </svg>
+    </div>
+  </div>
+  <div id="root"></div>
+
+  <!-- Main React App - Load first for fastest FCP -->
+
+  <!-- Deferred scripts - Load after main content to avoid blocking render -->
+  <!-- Google Tag Manager - Deferred to not block initial render -->
+  <script type="f189d841d1b0a50d901e2557-text/javascript">
+    // Defer GTM loading until after page becomes interactive
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var gtmScript = document.createElement('script');
+        gtmScript.async = true;
+        gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7BZ228VDJ3';
+        document.head.appendChild(gtmScript);
+
+        gtmScript.onload = function () {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-7BZ228VDJ3');
+        };
+      }, 100);
+    });
+  </script>
+
+  <!-- Popunder Ad Script - Deferred to not block render -->
+  <script type="f189d841d1b0a50d901e2557-text/javascript">
+    // Defer popunder ad script loading until after page becomes interactive
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        (function (fhb) {
+          var d = document,
+            s = d.createElement('script'),
+            l = d.scripts[d.scripts.length - 1];
+          s.settings = fhb || {};
+          s.src = "//insignificant-constant.com/c.Dr9D6gbX2G5glES/W-QZ9/NnjBc/1nOPTXMmzDMGyr0t2xNSzxUI5JM/zEMI0e";
+          s.async = true;
+          s.referrerPolicy = 'no-referrer-when-downgrade';
+          if (l && l.parentNode) {
+            l.parentNode.insertBefore(s, l);
+          }
+        })({});
+      }, 300);
+    });
+  </script>
+  <script type="f189d841d1b0a50d901e2557-text/javascript">
+    // Check if JavaScript resources are still loading
+    function areScriptsLoading() {
+      if (!window.performance || !window.performance.getEntriesByType) {
+        return true; // Fallback: assume loading if API not available
+      }
+
+      const resources = performance.getEntriesByType('resource');
+      const scripts = resources.filter(resource =>
+        resource.initiatorType === 'script' ||
+        resource.name.includes('.js') ||
+        resource.name.includes('main.jsx')
+      );
+
+      // Check if any scripts are still loading
+      const loadingScripts = scripts.filter(script => {
+        // If transferSize is 0 and duration is very short, it's likely cached
+        const isCached = script.transferSize === 0 && script.duration < 10;
+        // If duration is 0, it hasn't finished loading yet
+        const isStillLoading = script.duration === 0;
+        return !isCached && (isStillLoading || script.responseEnd === 0);
+      });
+
+      return loadingScripts.length > 0;
+    }
+
+    // Hide loading screen once React has mounted
+    function hideLoadingScreen() {
+      const loadingScreen = document.getElementById('initial-loading');
+      if (loadingScreen) {
+        loadingScreen.classList.add('hidden');
+        // Remove from DOM after transition
+        setTimeout(() => {
+          loadingScreen.remove();
+        }, 150);
+      }
+    }
+
+    // Check immediately if scripts are cached and React is ready
+    // If so, hide the loading screen right away
+    function checkIfShouldHideImmediately() {
+      const root = document.getElementById('root');
+      const loadingScreen = document.getElementById('initial-loading');
+
+      if (!loadingScreen) return;
+
+      // If React has already mounted, hide immediately
+      if (root && root.children.length > 0) {
+        hideLoadingScreen();
+        return;
+      }
+
+      // If scripts are not loading (cached), check if React mounts quickly
+      if (!areScriptsLoading()) {
+        // Give React a tiny moment to mount
+        setTimeout(() => {
+          if (root && root.children.length > 0) {
+            hideLoadingScreen();
+          }
+        }, 50);
+      }
+    }
+
+    // Check immediately on load
+    checkIfShouldHideImmediately();
+
+    // Hide when root has content (React has mounted)
+    const observer = new MutationObserver(() => {
+      const root = document.getElementById('root');
+      if (root && root.children.length > 0) {
+        hideLoadingScreen();
+        observer.disconnect();
+      }
+    });
+
+    const root = document.getElementById('root');
+    if (root) {
+      observer.observe(root, { childList: true, subtree: true });
+    }
+
+    // Also check periodically if scripts finished loading
+    const checkInterval = setInterval(() => {
+      if (!areScriptsLoading()) {
+        clearInterval(checkInterval);
+        // Scripts loaded, check if React mounted
+        const root = document.getElementById('root');
+        if (root && root.children.length > 0) {
+          hideLoadingScreen();
+        }
+      }
+    }, 30);
+
+    // Clean up interval after 5 seconds
+    setTimeout(() => clearInterval(checkInterval), 5000);
+  </script>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="f189d841d1b0a50d901e2557-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f9a97623e50c9f2',t:'MTc3ODQzMzM4Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>
